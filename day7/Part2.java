@@ -1,6 +1,6 @@
 
 
-public class Part1 {
+public class Part2 {
 
     public static void pa(int[] a) {
         for (int i=0;i<a.length;i++) {
@@ -8,10 +8,23 @@ public class Part1 {
         }
     }
 
+    public static int cost(int steps) {
+        if (steps==0) {
+            return 0;
+        }
+        int res = 0;
+        for (int i=1;i<=steps;i++) {
+            res += i;
+        }
+        return res;
+    }
+
     public static int solve(int[] a, int target) {
         int fuel = 0;
         for (int i=0;i<a.length;i++) {
-            fuel += Math.abs(a[i]-target);
+            // number of steps
+            int tmp = Math.abs(a[i]-target);
+            fuel += cost(tmp);
         }
         return fuel;
     }
